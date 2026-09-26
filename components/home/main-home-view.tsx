@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import { GreetingSection } from "./greeting-section";
 import { PromptComposer } from "./prompt-composer";
 import { QuickActionCards, QuickAction } from "./quick-action-cards";
-import { Sparkles, MessageSquare, History, ArrowRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { MessageSquare, History, ArrowRight } from "lucide-react";
 
 const recentPrompts = [
   "Refactor Next.js App Router layout components",
@@ -31,9 +30,9 @@ export function MainHomeView() {
       {/* 3. Quick Action Cards */}
       <QuickActionCards onSelectAction={handleActionSelect} />
 
-      {/* 4. Subtle Recent Threads / Prompts */}
-      <div className="w-full max-w-3xl mx-auto pt-2">
-        <div className="flex items-center justify-between px-1 mb-2">
+      {/* 4. Subtle Recent Sessions */}
+      <section aria-label="Recent Sessions" className="w-full max-w-3xl mx-auto pt-1">
+        <div className="flex items-center justify-between px-0.5 mb-2">
           <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500">
             <History className="h-3.5 w-3.5 text-slate-400" />
             <span>Recent Sessions</span>
@@ -48,14 +47,14 @@ export function MainHomeView() {
           {recentPrompts.map((p, idx) => (
             <button
               key={idx}
-              className="flex items-center gap-2 rounded-full border border-slate-200/80 bg-white px-3 py-1 text-xs font-medium text-slate-600 shadow-2xs hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 transition-colors cursor-pointer"
+              className="flex items-center gap-2 rounded-full border border-slate-200/80 bg-white px-3 py-1 text-xs font-medium text-slate-600 shadow-2xs hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/10 transition-colors cursor-pointer"
             >
               <MessageSquare className="h-3 w-3 text-slate-400" />
               <span className="truncate max-w-[240px] sm:max-w-xs">{p}</span>
             </button>
           ))}
         </div>
-      </div>
+      </section>
     </div>
   );
 }

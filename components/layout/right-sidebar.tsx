@@ -68,28 +68,24 @@ const popularTools = [
     title: "Image Generator",
     description: "Generate high-resolution visual assets",
     icon: ImageIcon,
-    iconColor: "text-purple-600 bg-purple-50/80",
   },
   {
     id: "code-assist",
     title: "Code Assistant",
     description: "Build, debug & explain code",
     icon: Code2,
-    iconColor: "text-emerald-600 bg-emerald-50/80",
   },
   {
     id: "web-search",
     title: "Web Search",
     description: "Real-time web browsing & insights",
     icon: Globe,
-    iconColor: "text-indigo-600 bg-indigo-50/80",
   },
   {
     id: "file-analyzer",
     title: "File Analyzer",
     description: "Extract knowledge from PDFs & CSVs",
     icon: FileText,
-    iconColor: "text-amber-600 bg-amber-50/80",
   },
 ];
 
@@ -97,26 +93,26 @@ export function RightSidebar({ isOpen, onClose }: RightSidebarProps) {
   if (!isOpen) return null;
 
   return (
-    <aside className="w-80 shrink-0 border-l border-slate-200/80 bg-slate-50/30 flex flex-col h-full overflow-y-auto select-none transition-all duration-300">
-      {/* Sidebar Top Header */}
-      <div className="flex h-14 items-center justify-between px-4 border-b border-slate-200/80 bg-white/60">
+    <aside aria-label="Workspace Information Panel" className="w-80 shrink-0 border-l border-slate-200/80 bg-slate-50/40 flex flex-col h-full overflow-y-auto select-none transition-all duration-200">
+      {/* Sidebar Header */}
+      <div className="flex h-14 items-center justify-between px-4 border-b border-slate-200/80 bg-white/70">
         <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
           Workspace Info
         </span>
         <Button
           variant="ghost"
           size="icon-xs"
+          aria-label="Close Information Panel"
           onClick={onClose}
           className="text-slate-400 hover:text-slate-700"
         >
           <X className="h-4 w-4" />
-          <span className="sr-only">Close Info Panel</span>
         </Button>
       </div>
 
       <div className="p-4 space-y-6 flex-1">
         {/* 1. AI Agents Promotion Section */}
-        <div className="rounded-xl border border-emerald-200/60 bg-emerald-50/50 p-3.5 space-y-2.5 backdrop-blur-xs">
+        <section aria-label="AI Agents Promotion" className="rounded-xl border border-emerald-200/60 bg-emerald-50/40 p-3.5 space-y-2.5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5">
               <div className="flex h-6 w-6 items-center justify-center rounded-md bg-emerald-600/10 text-emerald-700">
@@ -143,12 +139,12 @@ export function RightSidebar({ isOpen, onClose }: RightSidebarProps) {
             <span>Explore Agents</span>
             <ArrowRight className="h-3 w-3 text-emerald-600 transition-transform group-hover:translate-x-0.5" />
           </Button>
-        </div>
+        </section>
 
         <Separator className="bg-slate-200/60" />
 
         {/* 2. Recent Chats Section */}
-        <div className="space-y-3">
+        <section aria-label="Recent Conversations" className="space-y-3">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-bold text-slate-900">Recent Chats</h3>
             <button className="text-[11px] font-medium text-slate-500 hover:text-slate-900 transition-colors flex items-center gap-0.5 cursor-pointer">
@@ -163,7 +159,7 @@ export function RightSidebar({ isOpen, onClose }: RightSidebarProps) {
               return (
                 <button
                   key={chat.id}
-                  className="w-full flex items-start gap-2.5 p-2 rounded-lg text-left transition-colors hover:bg-slate-100/80 cursor-pointer group"
+                  className="w-full flex items-start gap-2.5 p-2 rounded-lg text-left transition-colors hover:bg-slate-100/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/10 cursor-pointer group"
                 >
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-slate-100 text-slate-500 group-hover:bg-white group-hover:text-slate-800 group-hover:shadow-2xs transition-all mt-0.5">
                     <Icon className="h-3.5 w-3.5" />
@@ -185,12 +181,12 @@ export function RightSidebar({ isOpen, onClose }: RightSidebarProps) {
               );
             })}
           </div>
-        </div>
+        </section>
 
         <Separator className="bg-slate-200/60" />
 
         {/* 3. Popular Tools Section */}
-        <div className="space-y-3">
+        <section aria-label="Popular Tools" className="space-y-3">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-bold text-slate-900">Popular Tools</h3>
             <button className="text-[11px] font-medium text-slate-500 hover:text-slate-900 transition-colors flex items-center gap-0.5 cursor-pointer">
@@ -205,12 +201,10 @@ export function RightSidebar({ isOpen, onClose }: RightSidebarProps) {
               return (
                 <button
                   key={tool.id}
-                  className="w-full flex items-center justify-between p-2 rounded-lg text-left transition-colors hover:bg-slate-100/80 cursor-pointer group"
+                  className="w-full flex items-center justify-between p-2 rounded-lg text-left transition-colors hover:bg-slate-100/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/10 cursor-pointer group"
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <div
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${tool.iconColor} transition-transform group-hover:scale-105`}
-                    >
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-700 group-hover:bg-white group-hover:shadow-2xs transition-all">
                       <Icon className="h-3.5 w-3.5" />
                     </div>
                     <div className="flex flex-col min-w-0">
@@ -227,7 +221,7 @@ export function RightSidebar({ isOpen, onClose }: RightSidebarProps) {
               );
             })}
           </div>
-        </div>
+        </section>
       </div>
     </aside>
   );
